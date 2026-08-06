@@ -11,7 +11,8 @@ little; it never fully clears.
 - [Astro](https://astro.build) — static-first, ships ~0 JS by default
 - [GSAP](https://gsap.com) + ScrollTrigger — one-shot and scroll-triggered animation
 - Plain CSS keyframes for continuous ambient motion (fog blobs, shimmer)
-- Deployed to GitHub Pages via GitHub Actions on every push to `main`
+- Deployed to GitHub Pages via GitHub Actions on every push to `main` (requires the repo's
+  **Settings → Pages → Source** set to "GitHub Actions" once, before the first deploy)
 
 ## Adding a project
 
