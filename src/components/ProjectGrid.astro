@@ -1,0 +1,98 @@
+---
+import { projects } from '../data/projects';
+import ProjectCard from './ProjectCard.astro';
+---
+
+<section class="grid-section">
+  <div class="container">
+    <h2 class="grid-heading">
+      What's <span class="gradient-text">cooking</span>
+    </h2>
+    <div class="grid" id="project-grid">
+      {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid-section {
+    padding-block: clamp(2rem, 6vh, 5rem);
+  }
+
+  .grid-heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(1rem, 3vw, 1.75rem);
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cards = document.querySelectorAll<HTMLElement>('#project-grid .card');
+
+  if (cards.length) {
+    if (reduceMotion) {
+      gsap.set(cards, { opacity: 1, y: 0, scale: 1 });
+    } else {
+      cards.forEach((card) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 48,
+          scale: 0.92,
+          duration: 0.7,
+          ease: 'back.out(1.6)',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+            once: true,
+          },
+        });
+      });
+    }
+  }
+
+  const isCoarsePointer = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  if (isCoarsePointer) {
+    cards.forEach((card) => {
+      let revertTimer: ReturnType<typeof setTimeout>;
+      card.addEventListener('click', () => {
+        card.classList.add('is-thinned');
+        clearTimeout(revertTimer);
+        revertTimer = setTimeout(() => card.classList.remove('is-thinned'), 1600);
+      });
+    });
+  }
+
+  const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (isFinePointer && !reduceMotion) {
+    cards.forEach((card) => {
+      const texture = card.querySelector<HTMLElement>('.card__texture-parallax');
+      if (!texture) return;
+
+      card.addEventListener('mousemove', (event) => {
+        const rect = card.getBoundingClientRect();
+        const px = (event.clientX - rect.left) / rect.width - 0.5;
+        const py = (event.clientY - rect.top) / rect.height - 0.5;
+        texture.style.transform = `translate(${px * 8}px, ${py * 8}px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        texture.style.transform = '';
+      });
+    });
+  }
+</script>
