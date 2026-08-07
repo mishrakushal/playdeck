@@ -2,6 +2,8 @@
 dist/
 # generated types
 .astro/
+# generated fog card images
+src/assets/fog-cards/
 
 # dependencies
 node_modules/

@@ -1,4 +1,6 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import type { Project } from '../data/projects';
 
 interface Props {
@@ -7,19 +9,24 @@ interface Props {
 }
 
 const { project, index } = Astro.props;
-const { slug, title, status, blurb, href, fogDensity } = project;
-const turbulenceId = `turb-${slug}`;
+const { status, href, fogDensity } = project;
+const turbulenceId = `turb-${index}`;
 const seed = index + 1;
+
+const fogCardImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/fog-cards/*.webp',
+  { eager: true },
+);
+const fogCardImage = fogCardImages[`../assets/fog-cards/card-${index}.webp`]?.default;
 ---
 
-<article class="card" style={`--fog: ${fogDensity}`} data-slug={slug}>
-  {href && <a class="card__link-overlay" href={href} aria-label={`Open ${title}`} />}
+<article class="card" style={`--fog: ${fogDensity}`} data-index={index}>
+  {href && <a class="card__link-overlay" href={href} aria-label="Open project" />}
 
   <span class="card__badge">{status}</span>
 
-  <div class="card__content">
-    <h3 class="card__title">{title}</h3>
-    <p class="card__blurb">{blurb}</p>
+  <div class="card__content" aria-hidden="true">
+    {fogCardImage && <Image src={fogCardImage} alt="" />}
   </div>
 
   <div class="card__fog" aria-hidden="true">
@@ -57,7 +64,7 @@ const seed = index + 1;
     background: var(--bg-raised);
     border: 1px solid rgba(255, 255, 255, 0.08);
     --thin: 0;
-    --fog-effective: max(calc(var(--fog) - (0.15 * var(--thin))), 0.42);
+    --fog-effective: max(calc(var(--fog) - (0.15 * var(--thin))), 0);
     transition: transform 0.25s ease, border-color 0.25s ease;
   }
 
@@ -106,17 +113,11 @@ const seed = index + 1;
     transition: filter 0.4s ease, opacity 0.4s ease;
   }
 
-  .card__title {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(1.25rem, 2.4vw, 1.6rem);
-    margin-bottom: 0.5rem;
-  }
-
-  .card__blurb {
-    color: var(--text-dim);
-    font-size: 0.95rem;
-    line-height: 1.5;
+  .card__content img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
   }
 
   .card__fog {
