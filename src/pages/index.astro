@@ -1,12 +1,199 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import ProjectGrid from '../components/ProjectGrid.astro';
+import Poster from '../components/Poster.astro';
+import { projects } from '../data/projects';
+
+// Stamped at build time; CI builds on every push to main, so this is the deploy time.
+const built = new Date();
+const checkedAt = new Intl.DateTimeFormat('en-IN', {
+  timeZone: 'Asia/Kolkata',
+  hour: 'numeric',
+  minute: '2-digit',
+  hour12: true,
+})
+  .format(built)
+  .replace(/\s/g, '')
+  .toLowerCase();
+
+const n = projects.length;
+const words = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+const count = words[n] ?? String(n);
+const works = n === 1 ? 'It actually works' : `${n === 2 ? 'Both' : 'All'} actually work`;
 ---
 
 <BaseLayout>
-  <main>
-    <Hero />
-    <ProjectGrid />
+  <main class="rs">
+    <div class="rs-wall">
+      <header class="rs-poster rs-hero tilt-l">
+        <span class="rs-sun" aria-hidden="true"></span>
+        <h1 class="rs-big"><span>Play</span><span>deck</span></h1>
+        <p class="rs-lede">
+          Live projects by Kushal. {count} on the wall so far. {works} (checked at <time datetime={built.toISOString()}>{checkedAt}</time>).
+        </p>
+        <div class="rs-index">
+          <p class="rs-label" id="on-the-wall">On the wall (so far)</p>
+          <ol aria-labelledby="on-the-wall">
+            {projects.map((p, i) => <li><b>{String(i + 1).padStart(2, '0')}</b><a href={p.href} target="_blank" rel="noopener">{p.title}</a></li>)}
+          </ol>
+        </div>
+        <p class="rs-fine"><span>Printed in 2 inks. Registration may vary.</span><span>Ed. 2 of ∞</span></p>
+      </header>
+      <div class="rs-col">
+        {projects.map((project, index) => <Poster project={project} index={index} />)}
+      </div>
+    </div>
+    <footer class="rs-foot">
+      <span>Posted by Kushal. Please don't paste over. More posters when they work, not before.</span>
+      <a href="https://github.com/mishrakushal" target="_blank" rel="noopener">GitHub →</a>
+    </footer>
   </main>
 </BaseLayout>
+
+<style>
+  .rs {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: clamp(16px, 3vw, 44px);
+  }
+  .rs-wall {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: clamp(14px, 2.2vw, 32px);
+    align-items: stretch;
+  }
+  .rs-col {
+    display: grid;
+    gap: clamp(14px, 2.2vw, 32px);
+    align-content: start;
+  }
+  .rs-hero {
+    color: var(--cobalt);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  /* Pinned while the posters scroll past, so the hero stays one screen tall at any N. */
+  @media (min-width: 761px) and (min-height: 700px) {
+    .rs-hero {
+      position: sticky;
+      top: clamp(16px, 3vw, 44px);
+      align-self: start;
+      min-height: calc(100svh - 2 * clamp(16px, 3vw, 44px));
+    }
+  }
+  .rs-sun {
+    position: absolute;
+    width: 62%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    right: -16%;
+    top: -4%;
+    background: radial-gradient(var(--red) 42%, transparent 44%) 0 0 / 7px 7px;
+    mix-blend-mode: multiply;
+    transform: translate(7px, -5px);
+    transition: transform 0.35s var(--ease);
+  }
+  .rs-hero:hover .rs-sun {
+    transform: none;
+  }
+  .rs-big {
+    font: 900 clamp(78px, min(17vw, 24svh), 240px) / 0.8 'Big Shoulders Display', sans-serif;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: -0.01em;
+    position: relative;
+  }
+  .rs-big span {
+    display: block;
+  }
+  .rs-lede {
+    font: 600 clamp(17px, 1.7vw, 24px) / 1.25 'Archivo', sans-serif;
+    font-stretch: 88%;
+    max-width: 21ch;
+    margin: clamp(18px, 2vw, 30px) 0 0;
+    position: relative;
+  }
+  .rs-index {
+    margin-top: auto;
+    padding-top: 32px;
+    position: relative;
+  }
+  .rs-label {
+    font: 700 12px / 1 'Archivo', sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+  .rs-index ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid currentColor;
+  }
+  .rs-index li {
+    font: 900 clamp(30px, 3.6vw, 60px) / 1 'Big Shoulders Display', sans-serif;
+    text-transform: uppercase;
+    padding: 0.14em 0 0.1em;
+    border-bottom: 2px solid currentColor;
+    display: flex;
+    gap: 0.35em;
+    align-items: baseline;
+  }
+  .rs-index li a {
+    text-decoration: none;
+  }
+  .rs-index li a:hover {
+    text-decoration: underline 3px;
+    text-underline-offset: 0.12em;
+  }
+  .rs-index li b {
+    font: 700 max(0.42em, 19px) / 1 'Archivo', sans-serif; /* large text: red on paper is 4.09:1 */
+    letter-spacing: 0.06em;
+    color: var(--red);
+  }
+  .rs-fine {
+    font: 500 12px / 1.4 'Archivo', sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 18px 0 0;
+    padding-top: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 10px;
+    position: relative;
+  }
+  .rs-fine > :last-child {
+    white-space: nowrap;
+  }
+  .rs-foot {
+    margin-top: clamp(18px, 3vw, 40px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    justify-content: space-between;
+    font: 600 13px / 1.4 'Archivo', sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .rs-foot a {
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+  @media (max-width: 760px) {
+    .rs-wall {
+      grid-template-columns: 1fr;
+    }
+    .rs-big {
+      font-size: clamp(96px, 30vw, 200px);
+    }
+    .rs-sun {
+      width: 46%;
+      top: 4%;
+      right: -8%;
+    }
+    .rs-index {
+      margin-top: 0;
+    }
+  }
+</style>

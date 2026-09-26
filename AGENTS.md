@@ -8,6 +8,16 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+## Git
+
+Never reference Claude, Claude Code, Anthropic, or AI assistance in git operations:
+
+- No `Co-Authored-By` trailers for Claude in commit messages
+- No "Generated with Claude Code" (or similar) footers in PR descriptions
+- No mentions in commit messages, PR titles, PR bodies, branch names, or review comments
+
+Author commits and PRs as the git user only.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build

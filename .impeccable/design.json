@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-26T13:28:00+00:00",
+  "title": "Design System: Playdeck",
+  "extensions": {
+    "colorMeta": {
+      "cobalt": {
+        "role": "primary",
+        "displayName": "Press Cobalt",
+        "canonical": "oklch(43.8% 0.202 266.3)",
+        "tonalRamp": [
+          "oklch(15% 0.11 266.3)",
+          "oklch(27% 0.2 266.3)",
+          "oklch(39% 0.2 266.3)",
+          "oklch(51% 0.2 266.3)",
+          "oklch(63% 0.2 266.3)",
+          "oklch(75% 0.2 266.3)",
+          "oklch(85% 0.2 266.3)",
+          "oklch(95% 0.11 266.3)"
+        ]
+      },
+      "red": {
+        "role": "secondary",
+        "displayName": "Riso Red",
+        "canonical": "oklch(59.7% 0.214 28)",
+        "tonalRamp": [
+          "oklch(15% 0.11 28)",
+          "oklch(27% 0.2 28)",
+          "oklch(39% 0.2 28)",
+          "oklch(51% 0.2 28)",
+          "oklch(63% 0.2 28)",
+          "oklch(75% 0.2 28)",
+          "oklch(85% 0.2 28)",
+          "oklch(95% 0.11 28)"
+        ]
+      },
+      "yellow": {
+        "role": "tertiary",
+        "displayName": "Fluoro Yellow Stock",
+        "canonical": "oklch(87.7% 0.176 92.7)",
+        "tonalRamp": [
+          "oklch(15% 0.094 92.7)",
+          "oklch(27% 0.17 92.7)",
+          "oklch(39% 0.17 92.7)",
+          "oklch(51% 0.17 92.7)",
+          "oklch(63% 0.17 92.7)",
+          "oklch(75% 0.17 92.7)",
+          "oklch(85% 0.17 92.7)",
+          "oklch(95% 0.094 92.7)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Poster Paper",
+        "canonical": "oklch(97.2% 0.007 106.5)",
+        "tonalRamp": [
+          "oklch(15% 0.004 106.5)",
+          "oklch(27% 0.007 106.5)",
+          "oklch(39% 0.007 106.5)",
+          "oklch(51% 0.007 106.5)",
+          "oklch(63% 0.007 106.5)",
+          "oklch(75% 0.007 106.5)",
+          "oklch(85% 0.007 106.5)",
+          "oklch(95% 0.004 106.5)"
+        ]
+      },
+      "plaster": {
+        "role": "neutral",
+        "displayName": "Wall Plaster",
+        "canonical": "oklch(86.7% 0.008 114.2)",
+        "tonalRamp": [
+          "oklch(15% 0.004 114.2)",
+          "oklch(27% 0.008 114.2)",
+          "oklch(39% 0.008 114.2)",
+          "oklch(51% 0.008 114.2)",
+          "oklch(63% 0.008 114.2)",
+          "oklch(75% 0.008 114.2)",
+          "oklch(85% 0.008 114.2)",
+          "oklch(95% 0.004 114.2)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Reading Ink",
+        "canonical": "oklch(19.1% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(95% 0.0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The stacked PLAY/DECK wordmark only; uppercase."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Poster titles, uppercase, balanced, with an off-register ghost."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Hero index entries, uppercase."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "The hero's single voice paragraph, max 21ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Poster blurbs, max 58ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Poster CTA strip (host and stack), uppercase."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Red index numerals, floored at 19px for large-text contrast."
+      },
+      "fine": {
+        "displayName": "Fine",
+        "purpose": "Hero edition line, uppercase; wraps at narrow widths."
+      }
+    },
+    "shadows": [
+      {
+        "name": "paste-up",
+        "value": "0 1px 0 rgb(0 0 0 / 0.08), 0 14px 24px -18px rgb(0 0 0 / 0.45)",
+        "purpose": "Every sheet, at rest and always; the only shadow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Register snap, 0.35s, on reg layer, title ghost, and hero sun."
+      },
+      {
+        "name": "register-offset-art",
+        "value": "translate(1%, -1%)",
+        "purpose": "Resting misregistration of the reg art layer."
+      },
+      {
+        "name": "register-offset-ghost",
+        "value": "translate(0.055em, 0.045em)",
+        "purpose": "Resting misregistration of the title ghost (opacity 0.9)."
+      },
+      {
+        "name": "register-offset-sun",
+        "value": "translate(7px, -5px)",
+        "purpose": "Resting misregistration of the hero halftone sun."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition: none !important",
+        "purpose": "prefers-reduced-motion: reduce zeroes every transition."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "max-width: 760px"
+      },
+      {
+        "name": "sticky-hero",
+        "value": "min-width: 761px and min-height: 700px"
+      },
+      {
+        "name": "wall-max",
+        "value": "1600px"
+      }
+    ],
+    "focus": {
+      "global": "outline: 4px solid var(--cobalt); outline-offset: 4px",
+      "poster": "outline: 4px solid var(--cobalt); outline-offset: 8px on the sheet via :has(a:focus-visible)"
+    },
+    "grain": "fixed fractalNoise SVG tile, 160px, baseFrequency .9, 2 octaves, 9% black, over plaster"
+  },
+  "components": [
+    {
+      "name": "Project Poster (paper)",
+      "kind": "card",
+      "refersTo": "project-poster",
+      "description": "Even-indexed project sheet: red title, cobalt ghost, off-register reg layer that snaps on hover/focus; whole sheet is the link.",
+      "html": "<article class=\"ds-sheet ds-poster\"><div class=\"ds-art\"><span class=\"ds-reg\"></span></div><h2 data-t=\"Vitruvian Pokémon\"><a href=\"#\">Vitruvian Pokémon</a></h2><p>One dry line about what the project does, and the joke in brackets.</p><div class=\"ds-cta\"><span class=\"ds-host\">example.vercel.app</span><span>Vercel · Next.js →</span></div></article>",
+      "css": ".ds-sheet{position:relative;padding:clamp(14px,1.9vw,28px);border-radius:0;box-shadow:0 1px 0 rgb(0 0 0 / .08),0 14px 24px -18px rgb(0 0 0 / .45);font-family:'Archivo',sans-serif;} .ds-poster{background:var(--paper,#f6f6f1);color:var(--ink,#141414);transform:rotate(.5deg);max-width:420px;} .ds-poster.ds-yellow{background:var(--yellow,#ffd21a);transform:rotate(-.7deg);} .ds-art{position:relative;aspect-ratio:4/3;background:radial-gradient(circle at 40% 55%,var(--red,#e3312b) 0 28%,transparent 29%);} .ds-art .ds-reg{position:absolute;inset:0;border:6px solid var(--cobalt,#1f3fbf);mix-blend-mode:multiply;transform:translate(1%,-1%);transition:transform .35s cubic-bezier(.16,1,.3,1);} .ds-poster h2{font:900 56px/.84 'Big Shoulders Display',sans-serif;text-transform:uppercase;margin:.28em 0 .12em;color:var(--red,#e3312b);display:grid;} .ds-poster h2::before,.ds-poster h2 a{grid-area:1/1;} .ds-poster h2::before{content:attr(data-t);position:relative;color:var(--cobalt,#1f3fbf);mix-blend-mode:multiply;opacity:.9;transform:translate(.055em,.045em);transition:transform .35s cubic-bezier(.16,1,.3,1);pointer-events:none;} .ds-yellow h2{color:var(--cobalt,#1f3fbf);} .ds-yellow h2::before{color:var(--red,#e3312b);} .ds-poster h2 a{color:inherit;text-decoration:none;} .ds-poster h2 a::after{content:'';position:absolute;inset:0;z-index:1;} .ds-poster h2 a:focus-visible{outline:none;} .ds-poster p{font:400 16px/1.45 'Archivo',sans-serif;margin:0;max-width:58ch;} .ds-cta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;margin-top:14px;padding-top:9px;border-top:2px solid var(--ink,#141414);font:700 13px/1.3 'Archivo',sans-serif;font-stretch:80%;letter-spacing:.07em;text-transform:uppercase;} .ds-cta .ds-host{text-decoration:underline 2px;text-underline-offset:3px;} .ds-poster:is(:hover,:has(a:focus-visible)) .ds-reg,.ds-poster:is(:hover,:has(a:focus-visible)) h2::before{transform:none;} .ds-poster:has(a:focus-visible){outline:4px solid var(--cobalt,#1f3fbf);outline-offset:8px;} @media (prefers-reduced-motion:reduce){.ds-reg,.ds-poster h2::before{transition:none;}}"
+    },
+    {
+      "name": "Project Poster (yellow)",
+      "kind": "card",
+      "refersTo": "project-poster-yellow",
+      "description": "Odd-indexed project sheet on yellow stock with swapped inks: cobalt title, red ghost.",
+      "html": "<article class=\"ds-sheet ds-poster ds-yellow\"><div class=\"ds-art\"><span class=\"ds-reg\"></span></div><h2 data-t=\"Find Me A Place\"><a href=\"#\">Find Me A Place</a></h2><p>One dry line about what the project does, and the joke in brackets.</p><div class=\"ds-cta\"><span class=\"ds-host\">example.vercel.app</span><span>Vercel · Next.js →</span></div></article>",
+      "css": ".ds-sheet{position:relative;padding:clamp(14px,1.9vw,28px);border-radius:0;box-shadow:0 1px 0 rgb(0 0 0 / .08),0 14px 24px -18px rgb(0 0 0 / .45);font-family:'Archivo',sans-serif;} .ds-poster{background:var(--paper,#f6f6f1);color:var(--ink,#141414);transform:rotate(.5deg);max-width:420px;} .ds-poster.ds-yellow{background:var(--yellow,#ffd21a);transform:rotate(-.7deg);} .ds-art{position:relative;aspect-ratio:4/3;background:radial-gradient(circle at 40% 55%,var(--red,#e3312b) 0 28%,transparent 29%);} .ds-art .ds-reg{position:absolute;inset:0;border:6px solid var(--cobalt,#1f3fbf);mix-blend-mode:multiply;transform:translate(1%,-1%);transition:transform .35s cubic-bezier(.16,1,.3,1);} .ds-poster h2{font:900 56px/.84 'Big Shoulders Display',sans-serif;text-transform:uppercase;margin:.28em 0 .12em;color:var(--red,#e3312b);display:grid;} .ds-poster h2::before,.ds-poster h2 a{grid-area:1/1;} .ds-poster h2::before{content:attr(data-t);position:relative;color:var(--cobalt,#1f3fbf);mix-blend-mode:multiply;opacity:.9;transform:translate(.055em,.045em);transition:transform .35s cubic-bezier(.16,1,.3,1);pointer-events:none;} .ds-yellow h2{color:var(--cobalt,#1f3fbf);} .ds-yellow h2::before{color:var(--red,#e3312b);} .ds-poster h2 a{color:inherit;text-decoration:none;} .ds-poster h2 a::after{content:'';position:absolute;inset:0;z-index:1;} .ds-poster h2 a:focus-visible{outline:none;} .ds-poster p{font:400 16px/1.45 'Archivo',sans-serif;margin:0;max-width:58ch;} .ds-cta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;margin-top:14px;padding-top:9px;border-top:2px solid var(--ink,#141414);font:700 13px/1.3 'Archivo',sans-serif;font-stretch:80%;letter-spacing:.07em;text-transform:uppercase;} .ds-cta .ds-host{text-decoration:underline 2px;text-underline-offset:3px;} .ds-poster:is(:hover,:has(a:focus-visible)) .ds-reg,.ds-poster:is(:hover,:has(a:focus-visible)) h2::before{transform:none;} .ds-poster:has(a:focus-visible){outline:4px solid var(--cobalt,#1f3fbf);outline-offset:8px;} @media (prefers-reduced-motion:reduce){.ds-reg,.ds-poster h2::before{transition:none;}}"
+    },
+    {
+      "name": "Hero Poster",
+      "kind": "custom",
+      "refersTo": "hero-poster",
+      "description": "Masthead sheet in cobalt: halftone red sun off register, stacked wordmark, voice lede, fine print.",
+      "html": "<header class=\"ds-sheet ds-hero\"><span class=\"ds-sun\" aria-hidden=\"true\"></span><h1 class=\"ds-big\"><span>Play</span><span>deck</span></h1><p class=\"ds-lede\">Live projects by Kushal. Two on the wall so far. Both actually work.</p><p class=\"ds-fine\"><span>Printed in 2 inks. Registration may vary.</span><span>Ed. 2 of ∞</span></p></header>",
+      "css": ".ds-sheet{position:relative;padding:clamp(14px,1.9vw,28px);border-radius:0;box-shadow:0 1px 0 rgb(0 0 0 / .08),0 14px 24px -18px rgb(0 0 0 / .45);font-family:'Archivo',sans-serif;} .ds-hero{background:var(--paper,#f6f6f1);color:var(--cobalt,#1f3fbf);overflow:hidden;transform:rotate(-.7deg);max-width:360px;} .ds-sun{position:absolute;width:62%;aspect-ratio:1;border-radius:50%;right:-16%;top:-4%;background:radial-gradient(var(--red,#e3312b) 42%,transparent 44%) 0 0/7px 7px;mix-blend-mode:multiply;transform:translate(7px,-5px);transition:transform .35s cubic-bezier(.16,1,.3,1);} .ds-hero:hover .ds-sun{transform:none;} .ds-big{font:900 120px/.8 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:-.01em;margin:0;position:relative;} .ds-big span{display:block;} .ds-lede{font:600 20px/1.25 'Archivo',sans-serif;font-stretch:88%;max-width:21ch;margin:24px 0 0;position:relative;} .ds-fine{font:500 12px/1.4 'Archivo',sans-serif;letter-spacing:.06em;text-transform:uppercase;margin:18px 0 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;position:relative;}"
+    },
+    {
+      "name": "Index List",
+      "kind": "nav",
+      "refersTo": "index-entry",
+      "description": "Ruled ordered list of projects with red numerals, named by its tracked label.",
+      "html": "<div class=\"ds-index\"><p class=\"ds-index-label\" id=\"ds-otw\">On the wall (so far)</p><ol aria-labelledby=\"ds-otw\"><li><b>01</b><a href=\"#\">Vitruvian Pokémon</a></li><li><b>02</b><a href=\"#\">Find Me A Place</a></li></ol></div>",
+      "css": ".ds-index{color:var(--cobalt,#1f3fbf);background:var(--paper,#f6f6f1);padding:20px;max-width:420px;font-family:'Archivo',sans-serif;} .ds-index-label{font:700 12px/1 'Archivo',sans-serif;letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px;} .ds-index ol{list-style:none;margin:0;padding:0;border-top:2px solid currentColor;} .ds-index li{font:900 44px/1 'Big Shoulders Display',sans-serif;text-transform:uppercase;padding:.14em 0 .1em;border-bottom:2px solid currentColor;display:flex;gap:.35em;align-items:baseline;} .ds-index li b{font:700 max(.42em,19px)/1 'Archivo',sans-serif;letter-spacing:.06em;color:var(--red,#e3312b);} .ds-index a{color:inherit;text-decoration:none;} .ds-index a:hover{text-decoration:underline 3px;text-underline-offset:.12em;} .ds-index a:focus-visible{outline:4px solid var(--cobalt,#1f3fbf);outline-offset:4px;}"
+    },
+    {
+      "name": "Footer",
+      "kind": "custom",
+      "refersTo": "cta-rule",
+      "description": "Sign-off strip under the wall with the GitHub link.",
+      "html": "<footer class=\"ds-foot\"><span>Posted by Kushal. Please don't paste over.</span><a href=\"#\">GitHub →</a></footer>",
+      "css": ".ds-foot{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font:600 13px/1.4 'Archivo',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink,#141414);background:var(--plaster,#d3d4ce);padding:16px;} .ds-foot a{color:inherit;text-decoration-thickness:2px;text-underline-offset:3px;} .ds-foot a:focus-visible{outline:4px solid var(--cobalt,#1f3fbf);outline-offset:4px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Riso Poster Wall",
+    "overview": "Playdeck is a plaster wall with two-ink risograph posters pasted up by hand. Each live project is a printed sheet, not a card in a grid. The hero is one more sheet on the same wall. The sheets sit square-cornered on a grained plaster ground, each tilted a fraction of a degree, with a soft paste-up shadow under it. Cobalt and red are the only printing inks, and they overprint with multiply blending, so where they cross they make the dark third colour a real riso press makes.\n\nThe one signature device is misregistration. Every poster's second ink layer and its title ghost sit slightly off register, and on hover or keyboard focus they snap into register. The movement is small, eased, and physical, and it is the whole of the motion language. The page ships zero JavaScript. Everything is static HTML and CSS, and the snap is pure CSS.\n\nThe density is poster-scale: huge condensed caps, a single dry line of copy per project, and a hard ruled strip at the foot of each sheet. Artwork belongs to the projects. The wall frames it and prints it in the house inks, but never redraws the project's identity.",
+    "keyCharacteristics": [
+      "Two inks (cobalt, red) overprinted with multiply, on paper or yellow stock, over a grained plaster ground.",
+      "Square sheets with a slight alternating tilt and a soft paste-up shadow.",
+      "Off-register second ink that snaps into register on hover and focus-visible.",
+      "Big Shoulders Display 900 caps for display, Archivo for everything read.",
+      "Zero JS. Reduced motion zeroes every transition."
+    ],
+    "rules": [
+      {
+        "name": "The Two Inks Rule",
+        "body": "Graphic colour comes from cobalt and red only, overprinted with `mix-blend-mode: multiply`. A new tint means a new ink, and this system has none to give.",
+        "section": "colors"
+      },
+      {
+        "name": "The Large Red Rule",
+        "body": "Red on paper measures 4.09:1, which passes only for large text. Red is used as display type, as graphic mass, or as bold numerals floored at 19px. It is never used for body copy, labels, or fine print.",
+        "section": "colors"
+      },
+      {
+        "name": "The Alternating Stock Rule",
+        "body": "Poster stock and tilt alternate by index. Even-indexed posters use paper stock and tilt right (0.5deg). Odd-indexed posters use yellow stock and tilt left (-0.7deg). On yellow stock, the title and ghost inks swap, giving a cobalt title with a red ghost.",
+        "section": "colors"
+      },
+      {
+        "name": "The Caps Are Ink Rule",
+        "body": "Big Shoulders is reserved for display, headline, and index sizes. Anything that must be read in sentences is set in Archivo.",
+        "section": "typography"
+      },
+      {
+        "name": "The Outlined-Art Rule",
+        "body": "Text inside artwork SVGs is outlined to paths, from Big Shoulders Display 900 and Archivo 600/700, because an SVG loaded via `<img>` cannot load webfonts.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Shadow Rule",
+        "body": "Every sheet uses the same paste-up shadow. State is shown by register, never by elevation.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do print every new graphic in cobalt and red only, with multiply where the inks cross, on paper or yellow stock.",
+      "Do give every new poster two 1200×900 art layers: a base, and an off-register reg layer that snaps into register on hover and focus-visible.",
+      "Do keep red to large text, graphic mass, or bold numerals of 19px and up.",
+      "Do outline text inside artwork SVGs, and embed the provenance of every shipped raster in its PNG tEXt.",
+      "Do derive counts and wording from `projects.length`, never hard-code them.",
+      "Do stamp \"checked at\" with the build time in IST (`en-IN`, Asia/Kolkata).",
+      "Do keep the page zero-JS, and let `prefers-reduced-motion: reduce` zero all transitions."
+    ],
+    "donts": [
+      "Don't add a third ink, gradients, or opacity tints to fake one. Reading ink is for text, not graphics.",
+      "Don't round sheet corners or give posters a different shadow, a hover lift, or a border.",
+      "Don't set body copy, labels, or fine print in red.",
+      "Don't redraw a project's identity. Print its own artwork in the house inks.",
+      "Don't place small tracked caps above headlines as eyebrows. The tracked label exists only to name the index list."
+    ]
+  }
+}

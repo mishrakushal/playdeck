@@ -1,32 +1,43 @@
 # Playdeck
 
-A gallery hub for mini-projects, live at [mishrakushal.github.io/playdeck](https://mishrakushal.github.io/playdeck/).
+Kushal's live side projects, pasted up as two-ink riso posters. Live at
+[mishrakushal.github.io/playdeck](https://mishrakushal.github.io/playdeck/).
 
-Each project gets a card that starts fogged over — a status badge stays readable, but the title
-and blurb stay hazy until the project is further along. Hover or tap a card to thin the fog a
-little; it never fully clears.
+Every poster is a working deployment. There are no roadmaps and no "coming soon".
 
 ## Stack
 
-- [Astro](https://astro.build) — static-first, ships ~0 JS by default
-- [GSAP](https://gsap.com) + ScrollTrigger — one-shot and scroll-triggered animation
-- Plain CSS keyframes for continuous ambient motion (fog blobs, shimmer)
-- Deployed to GitHub Pages via GitHub Actions on every push to `main` (requires the repo's
-  **Settings → Pages → Source** set to "GitHub Actions" once, before the first deploy)
+- [Astro](https://astro.build), static and with zero client JS.
+- Fonts from Google Fonts: Big Shoulders Display 900 and Archivo.
+- Deployed to GitHub Pages by GitHub Actions on every push to `main`. This needs the repo's
+  **Settings → Pages → Source** set to "GitHub Actions" once, before the first deploy.
+- The hero's "checked at" time is stamped at build time in IST, so each deploy re-stamps it.
 
-## Adding a project
+## Adding project N
 
-Add an entry to `src/data/projects.ts`:
+1. **Art.** Draw two 1200×900 layers into `public/projects/`, using only the two inks: cobalt
+   `#1f3fbf` and red `#e3312b`.
+   - `<slug>-base.svg` (or `.png`) is the first ink. Keep it transparent so the poster's paper or
+     yellow shows through.
+   - `<slug>-reg.svg` is the second ink. It prints off-register and snaps into place on hover
+     and focus.
+   - Outline any text or draw it as paths. An SVG loaded through `<img>` can't load web fonts.
+2. **Entry.** Add it to the top of `src/data/projects.ts`. The newest project gets top billing.
 
 ```ts
 {
   slug: 'my-project',
   title: 'My Project',
-  status: 'idea', // or 'in progress'
-  blurb: 'One or two sentences.',
-  fogDensity: 0.7, // 0 = no fog, 1 = fully obscured
+  blurb: 'One or two sentences, in voice.',
+  href: 'https://my-project.vercel.app/',
+  stack: 'Vercel · Next.js',
+  art: { base: 'my-project-base.svg', reg: 'my-project-reg.svg' },
+  alt: 'What the two layers show together.',
 }
 ```
+
+The tint (paper or yellow) and the tilt alternate by position. The hero's count, its index list
+and the CTA's host label all update on their own.
 
 ## Commands
 

@@ -1,14 +1,12 @@
 ---
-import '../styles/global.css';
-
 interface Props {
   title?: string;
   description?: string;
 }
 
 const {
-  title = 'Playdeck — mini-project gallery',
-  description = 'A gallery of mini-projects, materializing one at a time.',
+  title = 'Playdeck: live projects by Kushal',
+  description = 'Live side projects by Kushal, printed as posters. Every one is a working deployment you can open.',
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -22,11 +20,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0a0a0f" />
+    <meta name="theme-color" content="#d3d4ce" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Big+Shoulders+Display:wght@900&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
@@ -35,3 +33,80 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <slot />
   </body>
 </html>
+
+<style is:global>
+  /* Google's Archivo subsets skip → and ∞; this fills just those two. */
+  @font-face {
+    font-family: 'Archivo';
+    src: url('../assets/archivo-symbols.woff') format('woff');
+    font-weight: 100 900;
+    font-stretch: 62% 125%;
+    unicode-range: U+2192, U+221E;
+  }
+  :root {
+    --plaster: #d3d4ce;
+    --paper: #f6f6f1;
+    --cobalt: #1f3fbf;
+    --red: #e3312b;
+    --yellow: #ffd21a;
+    --ink: #141414;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    color-scheme: light;
+    scrollbar-color: var(--cobalt) var(--plaster);
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--ink);
+    font-family: 'Archivo', sans-serif;
+    background-color: var(--plaster);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  a {
+    color: inherit;
+  }
+  ::selection {
+    background: var(--cobalt);
+    color: var(--paper);
+  }
+  :focus-visible {
+    outline: 4px solid var(--cobalt);
+    outline-offset: 4px;
+  }
+  /* A pasted-up sheet: shared by the hero and every project poster. */
+  .rs-poster {
+    background: var(--paper);
+    position: relative;
+    padding: clamp(14px, 1.9vw, 28px);
+    box-shadow:
+      0 1px 0 rgb(0 0 0 / 0.08),
+      0 14px 24px -18px rgb(0 0 0 / 0.45);
+  }
+  .tilt-l {
+    transform: rotate(-0.7deg);
+  }
+  .tilt-r {
+    transform: rotate(0.5deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition: none !important;
+    }
+  }
+</style>
