@@ -13,6 +13,26 @@ export interface Project {
 // Newest first: it gets top billing on the wall.
 export const projects: Project[] = [
   {
+    slug: 'imposter',
+    title: 'Imposter',
+    blurb:
+      "Everyone gets the secret word except the imposter, who gets the category and a lot of confidence. One round in ten there's no word at all (everyone's bluffing, nobody's admitting it).",
+    href: 'https://imposter-teal-eight.vercel.app/',
+    stack: 'Vercel · Vite',
+    art: { base: 'imposter-base.svg', reg: 'imposter-reg.svg' },
+    alt: "Two tilted word cards. A cobalt outline card reads Biryani, Category: Indian Food. A solid red card tilted the other way reads You're the imposter, Category: Indian Food.",
+  },
+  {
+    slug: 'cc-helper',
+    title: 'CC-Helper',
+    blurb:
+      "Drops CLAUDE.md, DESIGN.md and EXAMPLES.md into a new project, so the rules show up before the code does. The whole installer is eight lines (I read it, so you don't have to, but you should).",
+    href: 'https://cc-helper.vercel.app/',
+    stack: 'Vercel · sh',
+    art: { base: 'cc-helper-base.svg', reg: 'cc-helper-reg.svg' },
+    alt: 'Three red folder tabs, CLAUDE.md, DESIGN.md and EXAMPLES.md, seated in a cobalt folder printed with the curl install line and its output. Below it: skip CLAUDE.md (exists).',
+  },
+  {
     slug: 'vitruvian',
     title: 'Vitruvian Pokémon',
     blurb:

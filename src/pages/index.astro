@@ -36,7 +36,7 @@ const works = n === 1 ? 'It actually works' : `${n === 2 ? 'Both' : 'All'} actua
             {projects.map((p, i) => <li><b>{String(i + 1).padStart(2, '0')}</b><a href={p.href} target="_blank" rel="noopener">{p.title}</a></li>)}
           </ol>
         </div>
-        <p class="rs-fine"><span>Printed in 2 inks. Registration may vary.</span><span>Ed. 2 of ∞</span></p>
+        <p class="rs-fine"><span>Printed in 2 inks. Registration may vary.</span><span>Ed. {n} of ∞</span></p>
       </header>
       <div class="rs-col">
         {projects.map((project, index) => <Poster project={project} index={index} />)}
@@ -73,7 +73,7 @@ const works = n === 1 ? 'It actually works' : `${n === 2 ? 'Both' : 'All'} actua
     overflow: hidden;
   }
   /* Pinned while the posters scroll past, so the hero stays one screen tall at any N. */
-  @media (min-width: 761px) and (min-height: 700px) {
+  @media (min-width: 1024px) and (min-height: 700px) {
     .rs-hero {
       position: sticky;
       top: clamp(16px, 3vw, 44px);
@@ -139,8 +139,12 @@ const works = n === 1 ? 'It actually works' : `${n === 2 ? 'Both' : 'All'} actua
     gap: 0.35em;
     align-items: baseline;
   }
+  /* 44px hit box without moving the rules. */
   .rs-index li a {
     text-decoration: none;
+    display: inline-block;
+    padding-block: 9px;
+    margin-block: -9px;
   }
   .rs-index li a:hover {
     text-decoration: underline 3px;
@@ -179,6 +183,57 @@ const works = n === 1 ? 'It actually works' : `${n === 2 ? 'Both' : 'All'} actua
   .rs-foot a {
     text-decoration-thickness: 2px;
     text-underline-offset: 3px;
+  }
+  /* The pinned hero's type also sizes off viewport height, so four-plus entries still fit one screen. */
+  @media (min-width: 1024px) and (min-height: 700px) {
+    .rs-big {
+      font-size: clamp(78px, min(17vw, 20svh), 240px);
+    }
+    .rs-lede {
+      margin-top: clamp(14px, 1.6vw, 24px);
+    }
+    .rs-index {
+      padding-top: 20px;
+    }
+    .rs-index li {
+      font-size: clamp(28px, min(3.6vw, 4.4svh), 60px);
+    }
+  }
+  /* Tablet: the 5:7 split crams the posters, so stack and fold the hero into a short band. */
+  @media (min-width: 761px) and (max-width: 1023px) {
+    .rs-wall {
+      grid-template-columns: 1fr;
+    }
+    .rs-hero {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      column-gap: clamp(24px, 4vw, 44px);
+      align-items: end;
+    }
+    .rs-big {
+      grid-row: 1 / 3;
+      font-size: clamp(120px, 19vw, 170px);
+    }
+    .rs-lede {
+      margin: 0;
+      max-width: 24ch;
+    }
+    .rs-index {
+      grid-column: 2;
+      margin-top: 0;
+      padding-top: 18px;
+    }
+    .rs-index li {
+      font-size: clamp(28px, 3.8vw, 38px);
+    }
+    .rs-fine {
+      grid-column: 1 / -1;
+    }
+    .rs-sun {
+      width: 30%;
+      top: -18%;
+      right: -5%;
+    }
   }
   @media (max-width: 760px) {
     .rs-wall {

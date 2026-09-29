@@ -152,22 +152,24 @@ A deliberately starved palette: two printing inks, two paper stocks, one wall, a
 - **Lede** (600, clamp(17px, 1.7vw, 24px), 1.25, width 88%): the hero's single voice paragraph, capped at 21ch.
 - **Body** (400, clamp(15px, 1.2vw, 17px), 1.45): poster blurbs, capped at 58ch.
 - **Label** (700, 13px, 0.07em, width 80%, uppercase): the host and stack strip at the foot of each poster. The footer uses a sibling setting (600, 13px, 0.06em, uppercase).
-- **Numeral** (700, max(0.42em, 19px), 0.06em): red two-digit index numbers (01, 02).
+- **Numeral** (700, max(0.42em, 19px), 0.06em): red two-digit index numbers (01, 02...).
 - **Fine** (500, 12px, 1.4, 0.06em, uppercase): the edition line at the foot of the hero, which wraps at narrow widths and keeps its last item unbroken.
 
 ### Named Rules
 **The Caps Are Ink Rule.** Big Shoulders is reserved for display, headline, and index sizes. Anything that must be read in sentences is set in Archivo.
 
-**The Outlined-Art Rule.** Text inside artwork SVGs is outlined to paths, from Big Shoulders Display 900 and Archivo 600/700, because an SVG loaded via `<img>` cannot load webfonts.
+**The Outlined-Art Rule.** Text inside artwork SVGs is outlined to paths, because an SVG loaded via `<img>` cannot load webfonts. House text uses Big Shoulders Display 900 and Archivo 600/700. Project art may outline the project's own fonts when it prints the project's own artwork (Unbounded 800 and Chivo for Imposter, Red Hat Mono for CC-Helper).
 
 ## Layout
 
 A single wall, max 1600px wide, centred, with page padding (spacing.page). On desktop the wall is a 5:7 grid, with the hero sheet on the left and a single column of project posters on the right, separated by the gutter (spacing.gutter). Newest project first.
 
-- **Sticky hero:** at ≥761px wide and ≥700px tall, the hero is `position: sticky`, offset by the page padding, with a minimum height of one viewport minus that padding. It stays one screen tall at any N while the posters scroll past, and the index and fine print pin to its foot via `margin-top: auto`.
+- **Sticky hero:** at ≥1024px wide and ≥700px tall, the hero is `position: sticky`, offset by the page padding, with a minimum height of one viewport minus that padding. The index and fine print pin to its foot via `margin-top: auto`. To keep the hero one screen tall as N grows, the wordmark and index entries also size off viewport height there (`min(17vw, 20svh)` and `min(3.6vw, 4.4svh)`). At four entries that fits a 1280×800 screen. Somewhere around seven the index will want two columns.
+- **Band (761–1023px):** the 5:7 split crams the posters, so the wall stacks. The hero folds into a short band, with the wordmark on the left and the lede, index and fine print on the right. Posters follow in one column.
 - **Stacked:** at ≤760px, the wall collapses to one column. The hero comes first, and its index follows the lede directly.
+- **Index hit area:** each index link is padded to a 44px tap target with an equal negative margin, so the rules don't move.
 - **Poster anatomy:** art (4:3, 1200×900 layers), then title, blurb, and the CTA strip (14px above, 9px padding, 2px top rule).
-- **Scaling to N:** the hero count ("Two", "Three"...) and the verb wording ("It actually works" / "Both" / "All") derive from `projects.length`. The index list and the poster column are both generated from the same array. Adding a project means one entry in `src/data/projects.ts` plus two art layers in `public/projects/` (see README.md).
+- **Scaling to N:** the hero count ("Two", "Three"...), the edition line ("Ed. 4 of ∞") and the verb wording ("It actually works" / "Both" / "All") derive from `projects.length`. The index list and the poster column are both generated from the same array. Adding a project means one entry in `src/data/projects.ts` plus two art layers in `public/projects/` (see README.md).
 
 ## Elevation & Depth
 

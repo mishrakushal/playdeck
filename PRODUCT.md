@@ -29,7 +29,7 @@ A hand-curated shelf of finished, running things. Every entry is live and clicka
 ## Capabilities and Constraints
 
 - **Live projects only.** No status badges, "idea" entries or work-in-progress cards.
-- The list is short (two today) and grows one project at a time. The layout must make two entries feel deliberate and still scale to N.
+- The list is short (four today) and grows one project at a time. The layout must make two entries feel deliberate and still scale to N.
 - Each project has a strong visual identity of its own. The gallery frames their artwork and does not restyle it.
 - Every project link must be obvious and scannable.
 - Content stays visible without JavaScript.
@@ -46,6 +46,8 @@ A hand-curated shelf of finished, running things. Every entry is live and clicka
 
 1. **Find Me A Place**: https://find-me-a-place-liart.vercel.app/ (source `~/Code/find-me-a-place/find-me-a-place`, Next.js). Finds a fair place for a group spread across a city to meet. It ranks places by how evenly everyone's travel time is spread, not by the raw midpoint. OG image at `/opengraph-image`.
 2. **Vitruvian Pokémon**: https://vitruvian-sigma.vercel.app/ (source `~/Code/vitruvian/vitruvian`, Vite + three.js). Every Pokémon's real 3D model, measured from its own mesh and drawn as a plate from Leonardo's notebook. OG image `public/og.jpg`; `/#25` deep-links to Pikachu.
+3. **Imposter**: https://imposter-teal-eight.vercel.app/ (source `~/Code/imposter/imposter`, Vite). A one-phone party game: everyone gets the secret word except the imposter, who gets only the category. It has an optional DRS, where a caught imposter can steal the win by naming the word, and a one-in-ten troll round with no word at all. OG image `public/og.png`.
+4. **CC-Helper**: https://cc-helper.vercel.app/ (source `~/Code/cc-helper/cc-helper`, static + `install.sh`). One `curl … | sh` line drops CLAUDE.md, DESIGN.md and EXAMPLES.md into a new project, and it skips any that already exist. OG image `public/og.png`.
 
 Nothing else may be claimed. There are no metrics, user counts, testimonials or other projects.
 
